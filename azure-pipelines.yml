@@ -28,7 +28,5 @@ stages:
                 azureSubscription: 'Free Trial (906bbb96-ff58-4b1d-a6a3-4cb4cca4e210)'
                 scriptType: 'ps'
                 scriptLocation: 'inlineScript'
-                inlineScript: |
-                  az storage blob upload --account-name 'storeduction' --container-name 'storecontiner' --file 'azure-pipelines-20'
-                  --sas-token '?sv=2021-06-08&ss=bfqt&srt=s&sp=rwdlacupiyx&se=2022-11-14T20:19:32Z&st=2022-11-14T12:19:32Z&spr=https&sig=XButD4RmTqrqdKlVVaGZuqiUphtIvEUxVGSRrKuqzc8%3D'
+                inlineScript: 'az storage blob upload-batch --s azure-pipelines-100.yml --account-name storedevelopaccount'
 
