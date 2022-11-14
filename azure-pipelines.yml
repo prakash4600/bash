@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  
+  - stage:
+    jobs:
+    - deployment: azure_evn
+      pool: 
+        vmImage: windows-latest
+         
+      environment: production
+      strategy:
+
+       runOnce:
+        deploy:
+          steps:
+            - task: AzureCLI@2
+              inputs:
+                azureSubscription: 'Free Trial (906bbb96-ff58-4b1d-a6a3-4cb4cca4e210)'
+                scriptType: 'ps'
+                scriptLocation: 'inlineScript'
+                inlineScript: 'az storage blob upload --account-name ''storeduction'' --container-name ''storecontiner'' --file ''azure-pipelines-20'''
+
